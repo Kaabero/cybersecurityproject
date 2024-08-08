@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title> Shopping list</title>
+    </head>
+    
+
+    <body>
+          
+		<h1>Hi {{ user.get_username }} !</h1>
+		
+        <form action='logout/' method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Logout"/>
+        </form>
+		
+        <h2>Here is your shopping list:</h2>
+
+        <table>
+		{% for product in products %}
+		<tr>
+		<td>
+		{{product.product}}
+		<td>
+        <form action='delete/' method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="id" value="{{product.id}}" />
+            <input type="submit" value="Delete"/>
+        </form>
+
+		{% endfor %}
+		</table>
+
+        <h2>Add product</h2>
+
+        <form action='add/' method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+			<input type="product" name="product" id="product"/>
+            <input type="submit" value="Add"/>
+        </form>
+    </body>
+</html>

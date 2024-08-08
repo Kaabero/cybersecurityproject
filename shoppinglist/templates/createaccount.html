@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Create account</title>
+    </head>
+
+    <body>      
+        <h2>Create your own shopping list account!</h2>
+        <form action="/createaccount/" method="POST">
+            {% csrf_token %}
+            <label for="username">Username: </label>
+            <input type="text" id="username" name="username"/>
+            <br>
+            <br>
+            <label for="password">Password: </label>
+            <input type="password" id="password" name="password"/>
+            <br>
+            <br>
+            <input type="submit" value="Create account"/>
+        </form>
+        <a href="/login">Log in</a>
+    </body>
+</html>
